@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import Header from '../page_components/Header';
+import PageHeader from '../page_components/PageHeader';
 import style from '@/styles/layout.module.css';
 import FlipCard from '@/components/cards/FlipCard/FlipCard';
 
@@ -20,13 +20,13 @@ export default function Cards() {
 			</Head>
 			<main className={style.wrapper}>
 				<div className={style.container}>
-					<Header />
+					<PageHeader />
 					<section>
-                        <FlipCard />
-                        <FlipCard />
-                        <FlipCard />
-                        <FlipCard />
-                    </section>
+						<FlipCard />
+						<FlipCard />
+						<FlipCard />
+						<FlipCard />
+					</section>
 				</div>
 			</main>
 		</>
