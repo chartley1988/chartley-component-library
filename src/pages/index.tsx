@@ -1,11 +1,7 @@
 import Head from 'next/head';
-import { Inter } from 'next/font/google';
 import Header from '@/page_components/Header';
 import style from '@/styles/layout.module.css';
-import Link from 'next/link';
 import MenuLink from '@/page_components/MenuLink';
-
-const inter = Inter({ subsets: ['latin'] });
 
 export default function Home() {
 	return (

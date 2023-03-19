@@ -1,10 +1,7 @@
 import Head from 'next/head';
-import { Inter } from 'next/font/google';
 import Header from '@/page_components/Header';
 import style from '@/styles/layout.module.css';
 import FlipCard from '@/components/cards/FlipCard/FlipCard';
-
-const inter = Inter({ subsets: ['latin'] });
 
 export default function Home() {
 	return (
