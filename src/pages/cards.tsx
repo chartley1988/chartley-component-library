@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import Header from '@/page_components/Header';
+import Header from '../page_components/Header';
 import style from '@/styles/layout.module.css';
 import FlipCard from '@/components/cards/FlipCard/FlipCard';
 
