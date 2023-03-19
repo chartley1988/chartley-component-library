@@ -3,7 +3,7 @@ import Header from '../page_components/Header';
 import style from '@/styles/layout.module.css';
 import FlipCard from '@/components/cards/FlipCard/FlipCard';
 
-export default function Home() {
+export default function Cards() {
 	return (
 		<>
 			<Head>
