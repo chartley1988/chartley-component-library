@@ -1,43 +1,45 @@
 import style from '@/components/cards/FlipCard/FlipCard.module.css';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
+import { ReactNode } from 'react';
 
-export default function FlipCard() {
+type AppProps = {
+	frontFace: ReactNode;
+	backFace: ReactNode;
+};
+
+export default function FlipCard({ frontFace, backFace }: AppProps) {
 	const [flipped, setFlipped] = useState(false);
-	const front = useRef(null);
-	const back = useRef(null);
 
 	function clickHandler() {
-		if (flipped) {
-			setFlipped(false);
-		} else {
-			setFlipped(true);
-		}
+		flipped ? setFlipped(false) : setFlipped(true);
 	}
 
 	return (
 		<div className={style.wrapper}>
 			<div className={style.container}>
 				{/* Card Back */}
-                <div
+				<div
 					className={
 						flipped
 							? `${style.back}`
 							: `${style.back} ${style.flipped}`
 					}
-					ref={back}
 					onClick={clickHandler}
-				></div>
+				>
+					{backFace}
+				</div>
 
-                {/* Card Front */}
+				{/* Card Front */}
 				<div
 					className={
 						flipped
 							? `${style.front} ${style.flipped}`
 							: `${style.front}`
 					}
-					ref={front}
 					onClick={clickHandler}
-				></div>
+				>
+					{frontFace}
+				</div>
 			</div>
 		</div>
 	);
