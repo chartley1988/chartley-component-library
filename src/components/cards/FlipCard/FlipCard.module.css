@@ -1,35 +1,23 @@
 .wrapper {
-    width: 300px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: stretch;
-}
-
-.container {
     position: relative;
-    width: 100%;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: stretch;
 }
 
 .front, .back {
     position: absolute;
     box-sizing: border-box;
     width: 100%;
-    height: auto;
+    height: 100%;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
-    transition: transform 0.8s ease;
+    overflow: hidden;
+}
 
-    border-radius: 1rem;
-    padding: 1rem;
+/* This allows you to set padding to children without affecting size of card **/
+.front > *, .back > * {
+    box-sizing: border-box;
 }
 
 .front {
-    background-color: rgb(245, 185, 185);
     transform: perspective(1000px) rotateY(0deg);
 }
 
@@ -38,7 +26,6 @@
 }
 
 .back {
-    background-color: #b0b0f3;
     transform: perspective(1000px) rotateY(0deg);
 }
 
