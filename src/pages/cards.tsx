@@ -71,6 +71,7 @@ export default function Cards() {
 							width='300px'
 							height='600px'
 							cornerRadius='2rem'
+                            axis='X'
 						/>
 						<FlipCard
 							frontFace={front()}
@@ -78,6 +79,7 @@ export default function Cards() {
 							width='300px'
 							height='300px'
                             cornerRadius='150px'
+                            axis='X'
 						/>
 					</section>
 				</div>

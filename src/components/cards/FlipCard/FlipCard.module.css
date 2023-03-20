@@ -1,6 +1,3 @@
-.wrapper {
-    position: relative;
-}
 
 .front, .back {
     position: absolute;
@@ -10,25 +7,4 @@
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     overflow: hidden;
-}
-
-/* This allows you to set padding to children without affecting size of card **/
-.front > *, .back > * {
-    box-sizing: border-box;
-}
-
-.front {
-    transform: perspective(1000px) rotateY(0deg);
-}
-
-.front.flipped {
-    transform: perspective(1000px) rotateY(-180deg);
-}
-
-.back {
-    transform: perspective(1000px) rotateY(0deg);
-}
-
-.back.flipped {
-    transform: perspective(1000px) rotateY(180deg);
 }

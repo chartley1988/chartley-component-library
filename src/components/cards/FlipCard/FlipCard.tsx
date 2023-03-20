@@ -10,6 +10,7 @@ type AppProps = {
 	speed: string;
 	zValue: number;
 	cornerRadius: string;
+	axis: 'X' | 'Y';
 };
 
 export default function FlipCard({
@@ -20,6 +21,7 @@ export default function FlipCard({
 	speed,
 	zValue,
 	cornerRadius,
+	axis,
 }: AppProps) {
 	const [flipped, setFlipped] = useState(false);
 
@@ -29,37 +31,70 @@ export default function FlipCard({
 
 	return (
 		<div
-			className={style.wrapper}
-			style={{ width: width, height: height, zIndex: zValue }}
+			style={{
+				position: 'relative',
+				width: width,
+				height: height,
+				zIndex: zValue,
+			}}
 		>
-			{/* Card Back */}
-			<div
-				className={
-					flipped ? `${style.back}` : `${style.back} ${style.flipped}`
-				}
-				onClick={clickHandler}
-				style={{
-					transition: `transform ${speed} ease`,
-					borderRadius: cornerRadius,
-				}}
-			>
-				{backFace}
-			</div>
-
 			{/* Card Front */}
 			<div
-				className={
-					flipped
-						? `${style.front} ${style.flipped}`
-						: `${style.front}`
-				}
+				className={style.front}
 				onClick={clickHandler}
-				style={{
-					transition: `transform ${speed} ease`,
-					borderRadius: cornerRadius,
-				}}
+                style={ 
+					flipped
+						? {
+                                
+								transform: `perspective(1000px) rotate${axis}(180deg)`,
+								transition: `transform ${speed} ease`,
+								borderRadius: cornerRadius,
+						  }
+						: {
+								transform: `perspective(1000px) rotate${axis}(0deg)`,
+								transition: `transform ${speed} ease`,
+								borderRadius: cornerRadius,
+						  }
+				}
 			>
-				{frontFace}
+				<div
+					style={{
+						boxSizing: 'border-box',
+						width: '100%',
+						height: '100%',
+					}}
+				>
+					{frontFace}
+				</div>
+			</div>
+
+			{/* Card Back */}
+			<div
+				className={style.back}
+				onClick={clickHandler}
+				style={
+					flipped
+						? {
+								transform: `perspective(1000px) rotate${axis}(0)`,
+								transition: `transform ${speed} ease`,
+								borderRadius: cornerRadius,
+						  }
+						: {
+								transform: `perspective(1000px) rotate${axis}(-180deg)`,
+								transition: `transform ${speed} ease`,
+								borderRadius: cornerRadius,
+						  }
+				}
+			>
+				<div
+					style={{
+						boxSizing: 'border-box',
+						width: '100%',
+						height: '100%',
+					}}
+				>
+					{backFace}
+				</div>
 			</div>
 		</div>
 	);
@@ -69,4 +104,5 @@ FlipCard.defaultProps = {
 	speed: '0.4s',
 	zValue: 1,
 	cornerRadius: '0',
+	axis: 'Y',
 };
